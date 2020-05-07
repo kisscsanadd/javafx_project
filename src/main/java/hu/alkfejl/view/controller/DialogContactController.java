@@ -112,6 +112,8 @@ public class DialogContactController implements Initializable {
 
         contact.nameProperty().bindBidirectional(nameField.textProperty());
         contact.emailProperty().bindBidirectional(emailField.textProperty());
+        // Little tricky
+        contact.birthProperty().bindBidirectional(new SimpleStringProperty(birthPicker.getValue().toString()));
         contact.workEmailProperty().bindBidirectional(workEmailField.textProperty());
         contact.addressProperty().bindBidirectional(addressField.textProperty());
         contact.workAddressProperty().bindBidirectional(workAddressField.textProperty());
@@ -154,6 +156,19 @@ public class DialogContactController implements Initializable {
         });
     }
 
+    private void InitTable() {
+
+        contact.nameProperty().bind(nameField.textProperty());
+        contact.emailProperty().bind(emailField.textProperty());
+        contact.workEmailProperty().bind(workEmailField.textProperty());
+        contact.addressProperty().bind(addressField.textProperty());
+        contact.workAddressProperty().bind(workAddressField.textProperty());
+        contact.phoneProperty().bind(phoneField.textProperty());
+        contact.workPhoneProperty().bind(workPhoneField.textProperty());
+        contact.organizationProperty().bind(organizationField.textProperty());
+        contact.positionProperty().bind(positionField.textProperty());
+        contact.organizationProperty().bind(organizationField.textProperty());
+    }
 
     public void initContact(Contact c){
         c.copyTo(this.contact);

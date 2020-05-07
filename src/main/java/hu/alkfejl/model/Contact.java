@@ -222,10 +222,10 @@ public class Contact{
         target.setEmail(this.getEmail());
         target.setWorkEmail(this.getWorkEmail());
         target.setAddress(this.getAddress());
-        target.setWorkAddress(this.getWorkAddress());
-        target.setPhone(this.getPhone());
-        target.setWorkPhone(this.getWorkPhone());
-        target.setModifiedOn(this.getModifiedOn());
-        target.setProfilePicture(this.getProfilePicture());
+        target.setEmail(this.getEmail());
+        target.setEmail(this.getEmail());
+        target.setEmail(this.getEmail());
+        target.setEmail(this.getEmail());
+        target.setEmail(this.getEmail());
     }
 }

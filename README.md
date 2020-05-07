@@ -1,2 +1,0 @@
-# alkalmazasfejlesztes
-alkefjl kotprog
