@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.*?>
+
+<GridPane hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="362.0" vgap="10.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.alkfejl.view.controller.DialogContactController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.0" minWidth="10.0" prefWidth="94.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.0" minWidth="10.0" prefWidth="218.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <Label text="Name" />
+        <Label text="Birth" GridPane.rowIndex="1" />
+        <Label text="Email" GridPane.rowIndex="2" />
+        <Label text="Work email" GridPane.rowIndex="3" />
+        <Label text="Phone" GridPane.rowIndex="4" />
+        <Label text="Work phone" GridPane.rowIndex="5" />
+        <Label text="Address" GridPane.rowIndex="6" />
+        <Label text="Work address" GridPane.rowIndex="7" />
+        <Label text="Organization" GridPane.rowIndex="8" />
+        <Label text="Position" GridPane.rowIndex="9" />
+        <Label text="Picture:" GridPane.rowIndex="10" />
+        <TextField fx:id="nameField" GridPane.columnIndex="1" />
+        <DatePicker fx:id="birthPicker" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <TextField fx:id="workEmailField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+        <TextField fx:id="phoneField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+        <TextField fx:id="workPhoneField" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+        <TextField fx:id="addressField" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+        <TextField fx:id="workAddressField" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+        <TextField fx:id="organizationField" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+        <TextField fx:id="positionField" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+        <Button fx:id="pictureChooser" text="Choose" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+        <Button cancelButton="true" mnemonicParsing="false" onAction="#cancel" text="Cancel" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="11" GridPane.valignment="CENTER">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </Button>
+        <Button fx:id="addButton" defaultButton="true" mnemonicParsing="false" onAction="#save" text="Hozzáadás" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="11" GridPane.valignment="CENTER" />
+        <Label fx:id="errorMsg" prefHeight="17.0" prefWidth="219.0" styleClass="warning" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    </children>
+    <opaqueInsets>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </opaqueInsets>
+    <cursor>
+        <Cursor fx:constant="CLOSED_HAND" />
+    </cursor>
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+</GridPane>

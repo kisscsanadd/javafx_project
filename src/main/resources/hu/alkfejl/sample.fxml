@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.alkfejl.view.controller.SampleController">
+   <children>
+      <HBox prefHeight="111.0" prefWidth="264.0">
+         <children>
+            <Button fx:id="goomb" mnemonicParsing="false" onAction="#handleEcho" prefHeight="26.0" prefWidth="76.0" text="Goomb" />
+            <TextField fx:id="echo" prefHeight="26.0" prefWidth="167.0" text="echo" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
