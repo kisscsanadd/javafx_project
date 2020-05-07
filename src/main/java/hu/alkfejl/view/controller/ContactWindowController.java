@@ -148,7 +148,7 @@ public class ContactWindowController implements Initializable {
     private void editContact(Contact c) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/hu/alkfejl/view/add_contact_dialog.fxml"));
+            loader.setLocation(getClass().getResource("/hu/alkfejl/add_contact_dialog.fxml"));
             Parent root = loader.load();
             DialogContactController controller = loader.getController();
             controller.initContact(c);

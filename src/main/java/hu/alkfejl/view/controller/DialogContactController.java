@@ -112,8 +112,6 @@ public class DialogContactController implements Initializable {
 
         contact.nameProperty().bindBidirectional(nameField.textProperty());
         contact.emailProperty().bindBidirectional(emailField.textProperty());
-        // Little tricky
-        contact.birthProperty().bindBidirectional(new SimpleStringProperty(birthPicker.getValue().toString()));
         contact.workEmailProperty().bindBidirectional(workEmailField.textProperty());
         contact.addressProperty().bindBidirectional(addressField.textProperty());
         contact.workAddressProperty().bindBidirectional(workAddressField.textProperty());
@@ -123,7 +121,7 @@ public class DialogContactController implements Initializable {
         contact.positionProperty().bindBidirectional(positionField.textProperty());
 
         addButton.disableProperty().bind(nameField.textProperty().isEmpty()
-                .or(errorMsg.textProperty().isNotEmpty())));
+                .or(errorMsg.textProperty().isNotEmpty()));
 
         emailField.textProperty().addListener((observable, oldValue, newValue) -> {
             if(newValue.matches("\\S+@\\S+\\.\\S+")){
@@ -147,29 +145,15 @@ public class DialogContactController implements Initializable {
             }
 
             if (!match) {
-                errorMsgName.setText("");
+                errorMsg.setText("");
                 FieldValidator();
             } else {
-                errorMsgName.setText("A contact with this name has already exist");
-                addButton.disableProperty().bind(errorMsgName.textProperty().isNotEmpty());
+                errorMsg.setText("A contact with this name has already exist");
+                addButton.disableProperty().bind(errorMsg.textProperty().isNotEmpty());
             }
         });
     }
 
-    private void InitTable() {
-
-        contact.nameProperty().bind(nameField.textProperty());
-        contact.birthProperty().bind(birthField.textProperty());
-        contact.emailProperty().bind(emailField.textProperty());
-        contact.workEmailProperty().bind(workEmailField.textProperty());
-        contact.addressProperty().bind(addressField.textProperty());
-        contact.workAddressProperty().bind(workAddressField.textProperty());
-        contact.phoneProperty().bind(phoneField.textProperty());
-        contact.workPhoneProperty().bind(workPhoneField.textProperty());
-        contact.organizationProperty().bind(organizationField.textProperty());
-        contact.positionProperty().bind(positionField.textProperty());
-        contact.organizationProperty().bind(organizationField.textProperty());
-    }
 
     public void initContact(Contact c){
         c.copyTo(this.contact);
