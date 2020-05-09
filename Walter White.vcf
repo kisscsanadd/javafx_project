@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:ez-vcard 0.10.6
+ORG:Blue Meth Co
+FN:Walter White
+ADR:;Albuquerque Meth st. 12.
+EMAIL:walterwhite@gmail.com
+EMAIL:walterwhite@gmail.com
+TEL:352416589
+BDAY:2020-05-27
+END:VCARD

@@ -1,19 +1,22 @@
 package hu.alkfejl.view.controller;
 
-import hu.alkfejl.App;
+
 import hu.alkfejl.controller.ContactController;
 import hu.alkfejl.model.Contact;
 import hu.alkfejl.utils.Utils;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -58,9 +61,6 @@ public class DialogContactController implements Initializable {
     Button addButton;
 
     @FXML
-    Button editButton;
-
-    @FXML
     Button pictureChooser;
 
     private Contact contact = new Contact();
@@ -71,7 +71,10 @@ public class DialogContactController implements Initializable {
 
     @FXML
     private void save(ActionEvent event) {
-        // if contact has an id then it is an edit, otherwise it is a new instance
+        if(contact.birthProperty().get() !=null){
+            contact.birthProperty().setValue((birthPicker.getValue().toString()));
+        }
+
         Task<Boolean> task = new Task<>() {
             @Override
             protected Boolean call() throws Exception {
@@ -100,6 +103,15 @@ public class DialogContactController implements Initializable {
     }
 
 
+    @FXML
+    private void fileOpen(ActionEvent event){
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.jpg");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File file = null;
+        file = fileChooser.showOpenDialog(((Node) event.getSource()).getScene().getWindow());
+        contact.setProfilePictureString(file.toString());
+    }
 
     @FXML
     private void cancel(ActionEvent event){
@@ -112,8 +124,7 @@ public class DialogContactController implements Initializable {
 
         contact.nameProperty().bindBidirectional(nameField.textProperty());
         contact.emailProperty().bindBidirectional(emailField.textProperty());
-        // Little tricky
-        contact.birthProperty().bindBidirectional(new SimpleStringProperty(birthPicker.getValue().toString()));
+
         contact.workEmailProperty().bindBidirectional(workEmailField.textProperty());
         contact.addressProperty().bindBidirectional(addressField.textProperty());
         contact.workAddressProperty().bindBidirectional(workAddressField.textProperty());
@@ -150,24 +161,10 @@ public class DialogContactController implements Initializable {
                 errorMsg.setText("");
                 FieldValidator();
             } else {
-                errorMsg.setText("A contact with this name has already exist");
+                errorMsg.setText("Can't add this name");
                 addButton.disableProperty().bind(errorMsg.textProperty().isNotEmpty());
             }
         });
-    }
-
-    private void InitTable() {
-
-        contact.nameProperty().bind(nameField.textProperty());
-        contact.emailProperty().bind(emailField.textProperty());
-        contact.workEmailProperty().bind(workEmailField.textProperty());
-        contact.addressProperty().bind(addressField.textProperty());
-        contact.workAddressProperty().bind(workAddressField.textProperty());
-        contact.phoneProperty().bind(phoneField.textProperty());
-        contact.workPhoneProperty().bind(workPhoneField.textProperty());
-        contact.organizationProperty().bind(organizationField.textProperty());
-        contact.positionProperty().bind(positionField.textProperty());
-        contact.organizationProperty().bind(organizationField.textProperty());
     }
 
     public void initContact(Contact c){

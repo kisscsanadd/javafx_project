@@ -1,0 +1,11 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:ez-vcard 0.10.6
+ORG:Werner Engineer
+FN:Werner Ziegler
+ADR:;Stuttgart
+EMAIL:wernerziegler@email.de
+EMAIL:wernerwork@email.de
+TEL:76767676
+BDAY:1985-05-22
+END:VCARD

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MailingListProject.iml" filepath="$PROJECT_DIR$/MailingListProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SampleJavaFXProject.iml" filepath="$PROJECT_DIR$/SampleJavaFXProject.iml" />
     </modules>
   </component>
 </project>

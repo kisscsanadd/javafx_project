@@ -3,11 +3,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.alkfejl.view.controller.ContactWindowController">
+<AnchorPane prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.alkfejl.view.controller.ContactWindowController">
    <children>
       <MenuBar layoutY="2.0">
         <menus>
-          <Menu mnemonicParsing="false" text="Person">
+          <Menu mnemonicParsing="false" text="Contact">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#addContact" text="Add Contact" />
               <MenuItem mnemonicParsing="false" onAction="#refreshTable" text="Refresh" />
@@ -19,17 +19,17 @@
       <TableView fx:id="table" layoutY="27.0" prefHeight="317.0" prefWidth="600.0" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
         <columns>
           <TableColumn fx:id="nameCol" prefWidth="100.0" text="Name" />
-          <TableColumn fx:id="emailCol" prefWidth="100.0" text="Email" />
-          <TableColumn fx:id="workEmailCol" prefWidth="100.0" text="Work email" />
-          <TableColumn fx:id="birthCol" prefWidth="100.0" text="Birth" />
+          <TableColumn fx:id="emailCol" prefWidth="120.0" text="Email" />
+          <TableColumn fx:id="pictureCol" prefWidth="85.0" text="Picture" />
+          <TableColumn fx:id="birthCol" prefWidth="80.0" text="Birth" />
           <TableColumn fx:id="positionCol" prefWidth="80.0" text="Position" />
           <TableColumn fx:id="organizationCol" prefWidth="100.0" text="Organization" />
           <TableColumn fx:id="addressCol" prefWidth="100.0" text="Address" />
           <TableColumn fx:id="workAddressCol" prefWidth="100.0" text="Work address" />
-          <TableColumn fx:id="phoneCol" prefWidth="100.0" text="Phone" />
-          <TableColumn fx:id="workPhoneCol" prefWidth="100.0" text="Work Phone" />
+          <TableColumn fx:id="phoneCol" prefWidth="80.0" text="Phone" />
+          <TableColumn fx:id="workPhoneCol" prefWidth="180.0" text="Work Phone" />
           <TableColumn fx:id="modifiedOnCol" prefWidth="100.0" text="Modified on" />
-          <TableColumn fx:id="actionsCol" prefWidth="106.39999389648438" text="Actions" />
+          <TableColumn fx:id="actionsCol" prefWidth="200.39999389648438" text="Actions" />
         </columns>
       </TableView>
 

@@ -1,4 +1,7 @@
+hu\alkfejl\view\controller\SampleController.class
 hu\alkfejl\model\Contact.class
+hu\alkfejl\App.class
+hu\alkfejl\view\controller\DialogContactController$1.class
 hu\alkfejl\dao\ContactDAO.class
 hu\alkfejl\utils\Utils.class
 hu\alkfejl\dao\ContactDAOImpl.class
@@ -6,4 +9,6 @@ hu\alkfejl\view\controller\ContactWindowController$1.class
 hu\alkfejl\view\controller\DialogContactController.class
 hu\alkfejl\view\controller\ContactWindowController.class
 hu\alkfejl\view\controller\ContactWindowController$2.class
+hu\alkfejl\NewMain.class
+hu\alkfejl\view\controller\ContactWindowController$3.class
 hu\alkfejl\controller\ContactController.class

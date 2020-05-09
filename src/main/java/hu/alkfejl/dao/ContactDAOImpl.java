@@ -1,7 +1,9 @@
 package hu.alkfejl.dao;
 
 import hu.alkfejl.model.Contact;
+import javafx.scene.image.Image;
 
+import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +14,11 @@ public class ContactDAOImpl implements ContactDAO {
     private static final String SELECT_ALL_CONTACT = "SELECT * FROM Contact;";
     private static final String DELETE_CONTACT = "DELETE FROM Contact WHERE id = ?;";
     private static final String INSERT_CONTACT = "INSERT INTO Contact(name, email, workEmail, birth, position, " +
-            "organization, address, workAddress, phone, workPhone, modifiedOn) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-    private static final String UPDATE_CONTACT = "UPDATE Contact SET name=?, email=?, workEmail=?, birth=?, position=?, \" +\n" +
-            "            \"organization=?, address=?, workAddress=?, phone=?, workPhone=?, modifiedOn=? WHERE id=?;";
+            "organization, address, workAddress, phone, workPhone, modifiedOn, picture) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    private static final String UPDATE_CONTACT = "UPDATE Contact SET name=?, email=?, workEmail=?, birth=?, position=?, " +
+            "organization=?, address=?, workAddress=?, phone=?, workPhone=?, modifiedOn=?, picture=? WHERE id=?;";
+
+
 
     /*
     * Table in DB :
@@ -28,10 +32,29 @@ public class ContactDAOImpl implements ContactDAO {
 
         try(Connection conn = DriverManager.getConnection(CONN_STR);
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(SELECT_ALL_CONTACT)
+            ResultSet rs = st.executeQuery(SELECT_ALL_CONTACT);
+
+
         ){
             while(rs.next()){
                 Contact c = new Contact();
+                InputStream input = rs.getBinaryStream(13);
+                if(input != null){
+                    InputStreamReader inputReader = new InputStreamReader(input);
+                    if(inputReader.ready())
+                    {
+                        File tempFile = new File("tempFile.jpg");
+
+                        FileOutputStream fos = new FileOutputStream(tempFile);
+                        byte[] buffer = new byte[1024];
+                        while(input.read(buffer) > 0){
+                            fos.write(buffer);
+                        }
+                        Image image = new Image(tempFile.toURI().toURL().toString());
+                        c.setProfilePicture(image);
+                    }
+                }
+
                 c.setId(rs.getInt(1)); //id
                 c.setName(rs.getString(2)); //name
                 c.setEmail(rs.getString(3)); //email
@@ -48,7 +71,7 @@ public class ContactDAOImpl implements ContactDAO {
                 result.add(c);
             }
 
-        }catch (SQLException e){
+        }catch (SQLException | IOException e){
             e.printStackTrace();
         }
         return result;
@@ -70,6 +93,7 @@ public class ContactDAOImpl implements ContactDAO {
             st.setString(9, c.getPhone());
             st.setString(10, c.getWorkPhone());
             st.setString(11, time.toString());
+            st.setBytes(12, readFile(c.getProfilePictureString()));
             int res = st.executeUpdate();
             TimeUnit.SECONDS.sleep(5);
             if (res == 1) {
@@ -114,7 +138,8 @@ public class ContactDAOImpl implements ContactDAO {
             st.setString(9, c.getPhone());
             st.setString(10, c.getWorkPhone());
             st.setString(11, time.toString());
-            st.setInt(12, c.getId());
+            st.setBytes(12, readFile(c.getProfilePictureString()));
+            st.setInt(13, c.getId());
             TimeUnit.SECONDS.sleep(5);
             int res = st.executeUpdate();
             return res == 1;
@@ -130,6 +155,24 @@ public class ContactDAOImpl implements ContactDAO {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public byte[] readFile(String file) {
+        ByteArrayOutputStream bos = null;
+        try {
+            File f = new File(file);
+            FileInputStream fis = new FileInputStream(f);
+            byte[] buffer = new byte[1024];
+            bos = new ByteArrayOutputStream();
+            for (int len; (len = fis.read(buffer)) != -1;) {
+                bos.write(buffer, 0, len);
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println(e.getMessage());
+        } catch (IOException e2) {
+            System.err.println(e2.getMessage());
+        }
+        return bos != null ? bos.toByteArray() : null;
     }
 
 }

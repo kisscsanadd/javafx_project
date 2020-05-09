@@ -1,0 +1,15 @@
+.errorMsg_reg {
+    -fx-text-fill: red;
+}
+
+.button:hover {
+    -fx-opacity: 0.8;
+}
+
+.warning {
+    -fx-text-fill: red;
+}
+
+#pictureCol{
+    -fx-alignment: center;
+}

@@ -44,7 +44,7 @@
         <TextField fx:id="workAddressField" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
         <TextField fx:id="organizationField" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
         <TextField fx:id="positionField" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
-        <Button fx:id="pictureChooser" text="Choose" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+        <Button fx:id="pictureChooser" text="Choose" onAction="#fileOpen" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
         <Button cancelButton="true" mnemonicParsing="false" onAction="#cancel" text="Cancel" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="11" GridPane.valignment="CENTER">
             <opaqueInsets>
                 <Insets />

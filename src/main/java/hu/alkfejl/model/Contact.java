@@ -5,8 +5,10 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.image.Image;
 
 import java.awt.*;
+import java.io.*;
 import java.sql.Timestamp;
 
 public class Contact{
@@ -23,12 +25,14 @@ public class Contact{
     private StringProperty workAddress= new SimpleStringProperty();
     private StringProperty position= new SimpleStringProperty();
     private StringProperty organization= new SimpleStringProperty();
+    private String profilePictureString;
+
     private Image profilePicture;
 
     public Contact() {
     }
 
-    public Contact(IntegerProperty id, StringProperty name, StringProperty modifiedOn, StringProperty birth, StringProperty email, StringProperty workEmail, StringProperty phone, StringProperty workPhone, StringProperty address, StringProperty workAddress, StringProperty position, StringProperty organization, Image profilePicture) {
+    public Contact(IntegerProperty id, StringProperty name, StringProperty modifiedOn, StringProperty birth, StringProperty email, StringProperty workEmail, StringProperty phone, StringProperty workPhone, StringProperty address, StringProperty workAddress, StringProperty position, StringProperty organization, String profilePictureString) {
         this.id = id;
         this.name = name;
         this.modifiedOn = modifiedOn;
@@ -41,6 +45,15 @@ public class Contact{
         this.workAddress = workAddress;
         this.position = position;
         this.organization = organization;
+        this.profilePictureString = profilePictureString;
+    }
+
+
+    public Image getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(Image profilePicture) {
         this.profilePicture = profilePicture;
     }
 
@@ -188,12 +201,12 @@ public class Contact{
         this.organization.set(organization);
     }
 
-    public Image getProfilePicture() {
-        return profilePicture;
+    public String getProfilePictureString() {
+        return profilePictureString;
     }
 
-    public void setProfilePicture(Image profilePicture) {
-        this.profilePicture = profilePicture;
+    public void setProfilePictureString(String profilePictureString) {
+        this.profilePictureString = profilePictureString;
     }
 
     @Override
@@ -211,6 +224,7 @@ public class Contact{
                 ", workAddress=" + workAddress +
                 ", position=" + position +
                 ", organization=" + organization +
+                ", profilePictureString=" + profilePictureString +
                 ", profilePicture=" + profilePicture +
                 '}';
     }
@@ -222,10 +236,15 @@ public class Contact{
         target.setEmail(this.getEmail());
         target.setWorkEmail(this.getWorkEmail());
         target.setAddress(this.getAddress());
-        target.setEmail(this.getEmail());
-        target.setEmail(this.getEmail());
-        target.setEmail(this.getEmail());
-        target.setEmail(this.getEmail());
-        target.setEmail(this.getEmail());
+        target.setWorkAddress(this.getWorkAddress());
+        target.setPhone(this.getPhone());
+        target.setWorkPhone(this.getWorkPhone());
+        target.setOrganization(this.getOrganization());
+        target.setPosition(this.getPosition());
+        target.setModifiedOn(this.getModifiedOn());
+        target.setProfilePictureString(this.getProfilePictureString());
+        target.setProfilePicture(this.getProfilePicture());
     }
+
+
 }
